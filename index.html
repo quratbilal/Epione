@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Epione Research | Empowering Researchers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --blue: #1a3a6b;
+    --accent: #2563eb;
+    --sky: #eff6ff;
+    --white: #ffffff;
+    --light: #f8fafc;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --gold: #f59e0b;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(–white);
+color: var(–navy);
+overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 100;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 1.2rem 6%;
+background: rgba(10,22,40,0.97);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.logo {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.7rem;
+font-weight: 700;
+color: var(–white);
+letter-spacing: 1px;
+}
+
+.logo span {
+color: var(–gold);
+}
+
+nav ul {
+list-style: none;
+display: flex;
+gap: 2.5rem;
+}
+
+nav ul a {
+color: rgba(255,255,255,0.75);
+text-decoration: none;
+font-size: 0.9rem;
+font-weight: 500;
+letter-spacing: 0.5px;
+transition: color 0.2s;
+}
+
+nav ul a:hover { color: var(–gold); }
+
+.nav-cta {
+background: var(–accent);
+color: white !important;
+padding: 0.55rem 1.4rem;
+border-radius: 6px;
+transition: background 0.2s !important;
+}
+
+.nav-cta:hover { background: #1d4ed8 !important; color: white !important; }
+
+/* HERO */
+.hero {
+min-height: 100vh;
+background: var(–navy);
+display: flex;
+align-items: center;
+position: relative;
+overflow: hidden;
+padding: 0 6%;
+}
+
+.hero::before {
+content: ‘’;
+position: absolute;
+top: -200px; right: -200px;
+width: 700px; height: 700px;
+background: radial-gradient(circle, rgba(37,99,235,0.18) 0%, transparent 70%);
+border-radius: 50%;
+}
+
+.hero::after {
+content: ‘’;
+position: absolute;
+bottom: -150px; left: 20%;
+width: 500px; height: 500px;
+background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%);
+border-radius: 50%;
+}
+
+.hero-content {
+max-width: 680px;
+position: relative;
+z-index: 2;
+animation: fadeUp 0.9s ease both;
+}
+
+.hero-badge {
+display: inline-block;
+background: rgba(245,158,11,0.15);
+border: 1px solid rgba(245,158,11,0.3);
+color: var(–gold);
+font-size: 0.78rem;
+font-weight: 500;
+letter-spacing: 2px;
+text-transform: uppercase;
+padding: 0.4rem 1rem;
+border-radius: 100px;
+margin-bottom: 1.8rem;
+}
+
+.hero h1 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2.5rem, 5vw, 4rem);
+font-weight: 700;
+color: var(–white);
+line-height: 1.15;
+margin-bottom: 1.4rem;
+}
+
+.hero h1 em {
+font-style: normal;
+color: var(–gold);
+}
+
+.hero p {
+font-size: 1.1rem;
+color: rgba(255,255,255,0.65);
+line-height: 1.8;
+max-width: 560px;
+margin-bottom: 2.5rem;
+}
+
+.hero-btns {
+display: flex;
+gap: 1rem;
+flex-wrap: wrap;
+}
+
+.btn-primary {
+background: var(–accent);
+color: white;
+padding: 0.85rem 2rem;
+border-radius: 8px;
+font-size: 0.95rem;
+font-weight: 500;
+text-decoration: none;
+transition: all 0.2s;
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+}
+
+.btn-primary:hover {
+background: #1d4ed8;
+transform: translateY(-2px);
+box-shadow: 0 8px 24px rgba(37,99,235,0.35);
+}
+
+.btn-outline {
+border: 1px solid rgba(255,255,255,0.3);
+color: white;
+padding: 0.85rem 2rem;
+border-radius: 8px;
+font-size: 0.95rem;
+font-weight: 500;
+text-decoration: none;
+transition: all 0.2s;
+}
+
+.btn-outline:hover {
+border-color: var(–gold);
+color: var(–gold);
+transform: translateY(-2px);
+}
+
+.hero-stats {
+position: absolute;
+right: 6%;
+bottom: 12%;
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+z-index: 2;
+animation: fadeUp 1s ease 0.3s both;
+}
+
+.stat-card {
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.1);
+border-radius: 12px;
+padding: 1.2rem 1.6rem;
+text-align: center;
+backdrop-filter: blur(8px);
+min-width: 140px;
+}
+
+.stat-card .num {
+font-family: ‘Playfair Display’, serif;
+font-size: 2rem;
+font-weight: 700;
+color: var(–gold);
+}
+
+.stat-card .label {
+font-size: 0.78rem;
+color: rgba(255,255,255,0.5);
+margin-top: 0.2rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+/* SECTION BASE */
+section { padding: 6rem 6%; }
+
+.section-tag {
+font-size: 0.78rem;
+font-weight: 500;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+color: var(–accent);
+margin-bottom: 0.8rem;
+}
+
+.section-title {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+font-weight: 700;
+color: var(–navy);
+line-height: 1.2;
+margin-bottom: 1rem;
+}
+
+.section-sub {
+color: var(–muted);
+font-size: 1rem;
+line-height: 1.8;
+max-width: 560px;
+}
+
+/* ABOUT */
+.about {
+background: var(–light);
+}
+
+.about-inner {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 5rem;
+align-items: center;
+max-width: 1100px;
+margin: 0 auto;
+}
+
+.about-visual {
+position: relative;
+}
+
+.about-card {
+background: var(–navy);
+border-radius: 16px;
+padding: 2.5rem;
+color: white;
+position: relative;
+overflow: hidden;
+}
+
+.about-card::before {
+content: ‘”’;
+position: absolute;
+top: -1rem;
+left: 1.5rem;
+font-family: ‘Playfair Display’, serif;
+font-size: 8rem;
+color: rgba(245,158,11,0.15);
+line-height: 1;
+}
+
+.about-card p {
+font-size: 1.05rem;
+line-height: 1.8;
+color: rgba(255,255,255,0.8);
+position: relative;
+z-index: 1;
+}
+
+.about-card .author {
+margin-top: 1.5rem;
+font-weight: 600;
+color: var(–gold);
+font-size: 0.9rem;
+position: relative;
+z-index: 1;
+}
+
+.values-list {
+margin-top: 2rem;
+display: flex;
+flex-direction: column;
+gap: 0.8rem;
+}
+
+.value-item {
+display: flex;
+align-items: center;
+gap: 0.8rem;
+font-size: 0.95rem;
+color: var(–navy);
+font-weight: 500;
+}
+
+.value-item .dot {
+width: 8px; height: 8px;
+background: var(–accent);
+border-radius: 50%;
+flex-shrink: 0;
+}
+
+/* SERVICES */
+.services-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 1.5rem;
+margin-top: 3rem;
+max-width: 1100px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.service-card {
+background: var(–white);
+border: 1px solid var(–border);
+border-radius: 14px;
+padding: 2rem;
+transition: all 0.3s;
+position: relative;
+overflow: hidden;
+}
+
+.service-card::after {
+content: ‘’;
+position: absolute;
+bottom: 0; left: 0; right: 0;
+height: 3px;
+background: var(–accent);
+transform: scaleX(0);
+transition: transform 0.3s;
+transform-origin: left;
+}
+
+.service-card:hover {
+border-color: transparent;
+box-shadow: 0 12px 40px rgba(37,99,235,0.12);
+transform: translateY(-4px);
+}
+
+.service-card:hover::after { transform: scaleX(1); }
+
+.service-icon {
+width: 52px; height: 52px;
+background: var(–sky);
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.5rem;
+margin-bottom: 1.3rem;
+}
+
+.service-card h3 {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.2rem;
+font-weight: 600;
+margin-bottom: 0.7rem;
+color: var(–navy);
+}
+
+.service-card p {
+font-size: 0.9rem;
+color: var(–muted);
+line-height: 1.7;
+}
+
+/* WORKSHOPS */
+.workshops {
+background: var(–navy);
+position: relative;
+overflow: hidden;
+}
+
+.workshops::before {
+content: ‘’;
+position: absolute;
+top: 0; right: 0;
+width: 500px; height: 500px;
+background: radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 70%);
+}
+
+.workshops .section-title { color: white; }
+.workshops .section-tag { color: var(–gold); }
+.workshops .section-sub { color: rgba(255,255,255,0.6); }
+
+.workshops-inner {
+max-width: 1100px;
+margin: 0 auto;
+}
+
+.workshop-features {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 1.2rem;
+margin-top: 3rem;
+}
+
+.workshop-feature {
+background: rgba(255,255,255,0.05);
+border: 1px solid rgba(255,255,255,0.1);
+border-radius: 12px;
+padding: 1.5rem;
+transition: background 0.3s;
+}
+
+.workshop-feature:hover {
+background: rgba(255,255,255,0.09);
+}
+
+.workshop-feature .icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+.workshop-feature h4 {
+color: white;
+font-size: 1rem;
+font-weight: 600;
+margin-bottom: 0.5rem;
+}
+
+.workshop-feature p {
+color: rgba(255,255,255,0.55);
+font-size: 0.85rem;
+line-height: 1.6;
+}
+
+.workshop-cta {
+margin-top: 2.5rem;
+}
+
+/* WHO WE HELP */
+.audience {
+background: var(–sky);
+}
+
+.audience-inner {
+max-width: 1100px;
+margin: 0 auto;
+}
+
+.audience-cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 1.2rem;
+margin-top: 3rem;
+}
+
+.audience-card {
+background: white;
+border-radius: 14px;
+padding: 1.8rem;
+border: 1px solid var(–border);
+transition: all 0.3s;
+}
+
+.audience-card:hover {
+box-shadow: 0 8px 30px rgba(37,99,235,0.1);
+transform: translateY(-3px);
+}
+
+.audience-card .emoji { font-size: 2.2rem; margin-bottom: 1rem; }
+.audience-card h4 {
+font-weight: 600;
+font-size: 1rem;
+margin-bottom: 0.5rem;
+color: var(–navy);
+}
+
+.audience-card p {
+font-size: 0.87rem;
+color: var(–muted);
+line-height: 1.6;
+}
+
+/* CONTACT */
+.contact-inner {
+max-width: 680px;
+margin: 0 auto;
+text-align: center;
+}
+
+.contact-form {
+margin-top: 3rem;
+background: var(–light);
+border: 1px solid var(–border);
+border-radius: 20px;
+padding: 2.5rem;
+text-align: left;
+}
+
+.form-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1rem;
+}
+
+.form-group {
+margin-bottom: 1.2rem;
+}
+
+.form-group label {
+display: block;
+font-size: 0.85rem;
+font-weight: 500;
+color: var(–navy);
+margin-bottom: 0.45rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+width: 100%;
+padding: 0.75rem 1rem;
+border: 1.5px solid var(–border);
+border-radius: 8px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 0.9rem;
+color: var(–navy);
+background: white;
+transition: border-color 0.2s;
+outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+border-color: var(–accent);
+box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
+}
+
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+.submit-btn {
+width: 100%;
+background: var(–accent);
+color: white;
+border: none;
+padding: 0.95rem;
+border-radius: 8px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 1rem;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.2s;
+margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+background: #1d4ed8;
+transform: translateY(-2px);
+box-shadow: 0 8px 24px rgba(37,99,235,0.3);
+}
+
+/* FOOTER */
+footer {
+background: var(–navy);
+color: rgba(255,255,255,0.5);
+text-align: center;
+padding: 2.5rem 6%;
+font-size: 0.87rem;
+}
+
+footer .footer-logo {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.4rem;
+color: white;
+font-weight: 700;
+margin-bottom: 0.5rem;
+}
+
+footer .footer-logo span { color: var(–gold); }
+
+footer p { margin-top: 0.8rem; }
+
+/* ANIMATION */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* SCROLL ANIMATION */
+.reveal {
+opacity: 0;
+transform: translateY(30px);
+transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+nav ul { display: none; }
+.about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+.hero-stats { position: relative; right: auto; bottom: auto; flex-direction: row; flex-wrap: wrap; justify-content: center; margin-top: 3rem; }
+.hero-content { text-align: center; }
+.hero-btns { justify-content: center; }
+.form-row { grid-template-columns: 1fr; }
+section { padding: 4rem 5%; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <div class="logo">Epi<span>one</span></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#workshops">Workshops</a></li>
+    <li><a href="#contact" class="nav-cta">Get Help</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🔬 Research & Academic Support</div>
+    <h1>Your Research Journey, <em>Guided by Experts</em></h1>
+    <p>Epione helps medical students, postgraduates, and researchers complete their thesis, dissertations, and research projects — with professional mentorship, write-up support, and workshops.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Get Started →</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="num">1000+</div>
+      <div class="label">Students Helped</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">5+</div>
+      <div class="label">Services</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">∞</div>
+      <div class="label">Support</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text reveal">
+      <p class="section-tag">Who We Are</p>
+      <h2 class="section-title">Research Support Built for Medical Students</h2>
+      <p class="section-sub">Epione was created to bridge the gap between ambition and execution in academic research. We understand that medical students are time-poor — and a stuck thesis shouldn't mean a stalled career.</p>
+      <div class="values-list">
+        <div class="value-item"><div class="dot"></div> Expert-led research mentorship</div>
+        <div class="value-item"><div class="dot"></div> Personalized, one-on-one guidance</div>
+        <div class="value-item"><div class="dot"></div> Ethical, academically sound support</div>
+        <div class="value-item"><div class="dot"></div> From concept to final submission</div>
+      </div>
+    </div>
+    <div class="about-visual reveal">
+      <div class="about-card">
+        <p>"Research is not just about data — it's about telling a story that matters. Epione exists to help every student tell theirs with confidence and clarity."</p>
+        <div class="author">— Epione Research Team</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+  <div style="max-width:1100px; margin:0 auto;">
+    <p class="section-tag reveal">What We Offer</p>
+    <h2 class="section-title reveal">Services Designed for <br>Research Excellence</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">📝</div>
+      <h3>Research Write-Up</h3>
+      <p>Professional assistance in structuring and writing your research paper, from abstract to conclusion — tailored to your journal or institution's guidelines.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🎓</div>
+      <h3>Thesis & Dissertation Help</h3>
+      <p>Stuck on your thesis or dissertation? We provide comprehensive support to get you unstuck and moving forward — chapter by chapter.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🧭</div>
+      <h3>Research Mentorship</h3>
+      <p>One-on-one mentorship with experienced researchers who guide you through your entire research journey — from choosing a topic to final defence.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">💬</div>
+      <h3>Consultation</h3>
+      <p>Need a second opinion or expert input on your methodology, analysis, or literature review? Book a focused consultation session with our team.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOPS -->
+
+<section class="workshops" id="workshops">
+  <div class="workshops-inner">
+    <p class="section-tag reveal">Live Learning</p>
+    <h2 class="section-title reveal">Research Workshops</h2>
+    <p class="section-sub reveal">We run structured, practical workshops designed to build your research skills from the ground up — whether you're a beginner or looking to sharpen your methods.</p>
+    <div class="workshop-features">
+      <div class="workshop-feature reveal">
+        <div class="icon">📊</div>
+        <h4>Research Methodology</h4>
+        <p>Understand study designs, sampling, data collection, and how to choose the right methodology for your research.</p>
+      </div>
+      <div class="workshop-feature reveal">
+        <div class="icon">📐</div>
+        <h4>Statistical Analysis</h4>
+        <p>Hands-on training in data analysis tools and interpretation of results for medical and health research.</p>
+      </div>
+      <div class="workshop-feature reveal">
+        <div class="icon">✍️</div>
+        <h4>Academic Writing</h4>
+        <p>Learn how to write clearly, cite correctly, and structure academic papers that get accepted.</p>
+      </div>
+      <div class="workshop-feature reveal">
+        <div class="icon">🏆</div>
+        <h4>Thesis Defense Prep</h4>
+        <p>Practice your defense, receive critical feedback, and build the confidence you need to succeed.</p>
+      </div>
+    </div>
+    <div class="workshop-cta reveal">
+      <a href="#contact" class="btn-primary">Register for a Workshop →</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE HELP -->
+
+<section class="audience" id="audience">
+  <div class="audience-inner">
+    <p class="section-tag reveal">Who We Help</p>
+    <h2 class="section-title reveal">We Support Every Stage of Your Research</h2>
+    <div class="audience-cards">
+      <div class="audience-card reveal">
+        <div class="emoji">🩺</div>
+        <h4>Medical Students</h4>
+        <p>Struggling to balance clinical rotations and thesis work? We help you complete your research without compromising on quality.</p>
+      </div>
+      <div class="audience-card reveal">
+        <div class="emoji">🔬</div>
+        <h4>Postgraduate Researchers</h4>
+        <p>Masters and PhD candidates who need expert guidance through complex methodologies and write-ups.</p>
+      </div>
+      <div class="audience-card reveal">
+        <div class="emoji">🏥</div>
+        <h4>Healthcare Professionals</h4>
+        <p>Clinicians and health workers who want to publish their findings or conduct evidence-based research.</p>
+      </div>
+      <div class="audience-card reveal">
+        <div class="emoji">📚</div>
+        <h4>First-Time Researchers</h4>
+        <p>No prior research experience? No problem. We guide you through every step from scratch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+  <div class="contact-inner">
+    <p class="section-tag reveal">Get In Touch</p>
+    <h2 class="section-title reveal">Ready to Get Started?</h2>
+    <p class="section-sub reveal" style="margin: 0 auto;">Tell us about your research challenge and we'll get back to you within 24 hours with a plan tailored for you.</p>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Dr. Jane Smith">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="jane@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Phone / WhatsApp (optional)</label>
+        <input type="tel" placeholder="+1 234 567 8900">
+      </div>
+      <div class="form-group">
+        <label>Service Needed</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Research Write-Up</option>
+          <option>Thesis / Dissertation Help</option>
+          <option>Research Mentorship</option>
+          <option>Consultation</option>
+          <option>Workshop Registration</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell Us About Your Research</label>
+        <textarea placeholder="Briefly describe your research topic, where you're stuck, or what help you need..."></textarea>
+      </div>
+      <button class="submit-btn">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-logo">Epi<span>one</span></div>
+  <p>Empowering Researchers, One Study at a Time.</p>
+  <p style="margin-top: 1.5rem;">© 2025 Epione Research. All rights reserved.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80 * (Array.from(reveals).indexOf(entry.target) % 4));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav active state on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
